@@ -2,7 +2,6 @@ package com.downStream.cassandra.reactive.controller;
 
 
 import com.downStream.cassandra.reactive.model.Activities;
-import com.downStream.cassandra.reactive.model.Demo;
 import com.downStream.cassandra.reactive.service.CassandraSinkService;
 import static com.ibm.common.activitystreams.Makers.activity;
 
@@ -24,7 +23,7 @@ import java.util.List;
 
 import static com.ibm.common.activitystreams.Makers.object;
 
-@EnableKafka
+
 @Controller
 public class DataController {
 
@@ -71,21 +70,6 @@ public class DataController {
 
   }
 
-//    @KafkaListener(topics="WordsWithCountsTopic")
-//  public void listen(Flux<Activity> activityFromAdapters) {
-//      activityFromAdapters.subscribe(activity -> cassandraSinkService.saveActivities(activity));
-//    }
-////
-//
-//  @KafkaListener(topics="TextTopic")
-//  public void listen(Flux<Activity> activityAfterSentimentalAnalysis) {
-//    activityAfterSentimentalAnalysis.subscribe(activity->cassandraSinkService.saveActivities(activity));
-//}
-//    @GetMapping("/list")
-//    public Flux<Employe> getAllEmployees() {
-//        Flux<Employe> employees = employeeService.getAllEmployees();
-//        return employees;
-//    }
 
 //    @GetMapping("/{id}")
 //    public Mono<Employe> getEmployeeById(@PathVariable int id) {

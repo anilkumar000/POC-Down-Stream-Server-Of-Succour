@@ -1,7 +1,6 @@
 package com.downStream.cassandra.reactive.service;
 
 import com.downStream.cassandra.reactive.model.Activities;
-import com.downStream.cassandra.reactive.model.Demo;
 import com.downStream.cassandra.reactive.repository.SuccourCassandraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,13 +9,17 @@ import reactor.core.publisher.Flux;
 import java.util.List;
 
 @Service
-public class CassandraSinkService {
+public class CassandraSinkService implements SinkService {
 
-    @Autowired
+
     SuccourCassandraRepository succourCassandraRepository;
+    @Autowired
+    public CassandraSinkService(SuccourCassandraRepository succourCassandraRepository){
+      this.succourCassandraRepository=succourCassandraRepository;
+    }
 
+    @Override
     public void saveActivities(List<Activities> activities) {
-//      System.out.println(activities.toString());
 
          Flux<Activities> demoFlux=succourCassandraRepository.saveAll(activities);
          demoFlux.subscribe(activity-> System.out.println(activity.toString()));
